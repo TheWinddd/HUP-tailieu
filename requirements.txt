@@ -5,3 +5,4 @@ requests
 Pillow
 img2pdf
 tqdm
+gunicorn
