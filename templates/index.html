@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>PDF Downloader</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2em auto; }
+    label { display: block; margin-top: 1em; }
+    input[type="text"] { width: 100%; padding: .5em; }
+    button { margin-top: 1em; padding: .75em 1.5em; }
+    #loading { display: none; color: green; margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Chuyển trang web thành PDF</h1>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul style="color:red;">
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <form method="post" onsubmit="showLoading()">
+    <label>Link tài liệu:
+      <input type="text" name="doc_url" placeholder="https://elib.hup.edu.vn/..." required />
+    </label>
+    <label>Tên file đầu ra (không cần .pdf):
+      <input type="text" name="filename" placeholder="ten_file_output" />
+    </label>
+    <button type="submit">Chạy & Tải PDF</button>
+  </form>
+  <div id="loading">Đang xử lý, vui lòng chờ …</div>
+
+  <script>
+    function showLoading() {
+      document.getElementById('loading').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
