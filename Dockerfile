@@ -24,9 +24,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy toàn bộ code
 COPY . .
 
-# Expose port mà Render sẽ dùng
 
-EXPOSE 10000
 
 # Chạy Gunicorn
-CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:$PORT", "--workers", "1"]
+CMD gunicorn app:app --bind 0.0.0.0:$PORT --workers 1
